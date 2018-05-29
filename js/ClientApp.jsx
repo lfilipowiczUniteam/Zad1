@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import axios from 'axios'
+import Post from './Post.jsx'
 
 class App extends  React.Component {
     state = {
@@ -27,6 +28,9 @@ class App extends  React.Component {
         return (
         <div className='app'>
             <input type="text" onChange={this.handleSearchTermChange} value={this.state.searchTerm} />
+            <div>
+                {this.state.data.map(post => <Post key={post.id} {...post}/>)}
+            </div>
         </div>
         )
     }
