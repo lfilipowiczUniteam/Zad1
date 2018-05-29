@@ -1,13 +1,21 @@
 import React from 'react'
 import { string } from "prop-types"
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+border: 2px solid #333;
+border-radius: 4px;
+margin-top: 25px;
+padding: 10px;
+`
 
 const Post = props => (
-    <div className="post">
-        <p>{props.id}</p>
-        <p>{props.userId}</p>
+    <Wrapper>
+        <p>{`ID: ${props.id}`}</p>
+        <p>{`UserID: ${props.userId}`}</p>
         <p>{props.title}</p>
         <p>{props.body}</p>
-    </div>
+    </Wrapper>
     )
 
 
