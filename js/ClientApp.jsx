@@ -29,7 +29,9 @@ class App extends  React.Component {
         <div className='app'>
             <input type="text" onChange={this.handleSearchTermChange} value={this.state.searchTerm} />
             <div>
-                {this.state.data.map(post => <Post key={post.id} {...post}/>)}
+                {this.state.data.filter(post => 
+                post.title.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0)
+                .map(post => <Post key={post.id} {...post}/>)}
             </div>
         </div>
         )
