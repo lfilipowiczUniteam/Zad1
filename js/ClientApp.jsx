@@ -1,14 +1,14 @@
 import React from 'react'
 import { render } from 'react-dom'
 import axios from 'axios'
-import Post from './Post.jsx'
+import Post from './Post'
 
 class App extends  React.Component {
     state = {
         searchTerm: "",
         data: [{
-            userId: '',
-            id: '',
+            userId: 0,
+            id: 0,
             title: '',
             body: ''
         }]
@@ -17,7 +17,7 @@ class App extends  React.Component {
     componentDidMount() {
         axios.get('https://jsonplaceholder.typicode.com/posts')
         .then(response => response.data.map(({userId, id, title, body}) => ({userId, id, title, body})))
-        .then(data => this.setState({data: data}))
+        .then(data => this.setState({data}))
     }
 
     handleSearchTermChange = event => {

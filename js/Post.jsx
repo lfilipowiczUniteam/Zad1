@@ -1,5 +1,5 @@
 import React from 'react'
-import { string } from "prop-types"
+import { string, number } from 'prop-types'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -25,8 +25,8 @@ Post.defaultProps = {
 }
 
 Post.propTypes = {
-    id: string.isRequired,
-    userId: string.isRequired,
+    id: number.isRequired,
+    userId: number.isRequired,
     title: string,
     body: string
 
