@@ -6,6 +6,7 @@ import Post from './Post'
 class App extends  React.Component {
     state = {
         searchTerm: "",
+        postId: 0 
         data: [{
             userId: 0,
             id: 0,
@@ -15,10 +16,19 @@ class App extends  React.Component {
     };
 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+       this.fetchData(this.state.pagination)
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.postId!== this.state.postId){
+            this.fetchDate(this.state.postId)
+        }
+    }
+
+    fetchData(pagination){ axios.get('https://jsonplaceholder.typicode.com/posts')
         .then(response => response.data.map(({userId, id, title, body}) => ({userId, id, title, body})))
         .then(data => this.setState({data}))
-    }
+               }
 
     handleSearchTermChange = event => {
         this.setState({searchTerm: event.target.value})
